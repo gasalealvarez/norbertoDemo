@@ -1,0 +1,56 @@
+.container {
+    margin-top: 20px;
+}
+
+.card {
+    margin-top: 10px;
+}
+
+.header {
+    font-size: 1.1rem;
+    color:#fff;
+    background-color: #4e73df;
+}
+
+.seleccionarCliente {
+    font-size: 1.2rem;
+}
+
+.detalle {
+    margin-top: 8px;
+}
+
+.botonTerminar {
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+
+@media screen and (max-width: 565px) and (min-width: 300px) {
+    .priority-5{
+            display:none;
+    }
+    .priority-4{
+            display:none;
+    }
+    .priority-3{
+            display:none;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .priority-5{
+            display:none;
+    }
+    .priority-4{
+            display:none;
+    }
+    .priority-3{
+            display:none;
+    }
+    .priority-2{
+            display:none;
+    }
+
+}

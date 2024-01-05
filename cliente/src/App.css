@@ -1,0 +1,107 @@
+#root{
+  margin: 0;
+  height: 100vw;
+}
+
+
+/* Navbar */
+
+.logo{
+    height: 30px;
+} 
+
+.navbar{
+  background-color: #023e8a;
+  color: #fefae0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  vertical-align: center;
+  font-size: 1.2rem;
+}
+
+.nav-link {
+  color: #fff;
+  
+}
+
+.nav-link:hover {
+  color: #d4a373; 
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+  color: #fefae0;
+}
+.nav-link:focus {
+  color: #fefae0;
+}
+
+/* Generales */
+.titulo{
+  text-align: center;
+}
+
+/* Loading */
+
+.divPadre {
+  height: 100vh;
+  position: relative;
+}
+
+.divHijo {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+
+.spinner {
+  width: 120px;
+  height: 120px;
+  border: 10px solid currentColor;
+  border-right-color: transparent;
+}
+
+/* Listar Clientes */
+
+.contenedor_tabla{
+  margin: 50px 20px;
+}
+
+/* Export Productos */
+
+
+.titulo {
+  text-align: center;
+  color:#3a86ff;
+  padding: 20px;
+}
+
+.contenedorCard{
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+.contenedorInput{
+  margin-top: 20px;
+}
+
+.contenedorBotonExportar{
+  margin-top: 20px;
+  text-align: center;
+}
+.botonExportar {
+  width: 100%;
+}
+
+.buscador {
+  margin-right: 5px;
+}
+
+.text-end {
+  margin: 40px 0px 10px 0px;
+}

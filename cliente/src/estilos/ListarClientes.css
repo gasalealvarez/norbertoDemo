@@ -1,0 +1,51 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+
+th {
+    text-align: center;
+ }
+
+
+td:nth-child(5) {
+   text-align: center;
+}
+
+
+
+@media screen and (max-width: 565px) and (min-width: 300px) {
+    .priority-5{
+            display:none;
+    }
+    .priority-4{
+            display:none;
+    }
+    .priority-3{
+            display:none;
+    }
+
+    .priority-2{
+        display:none;
+    }
+}
+
+
+
+
+@media screen and (max-width: 300px) {
+    .priority-5{
+            display:none;
+    }
+    .priority-4{
+            display:none;
+    }
+    .priority-3{
+            display:none;
+    }
+    .priority-2{
+            display:none;
+    }
+
+}
