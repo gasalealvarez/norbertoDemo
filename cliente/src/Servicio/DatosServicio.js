@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { saveAs } from 'file-saver'
 
+const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"
 
 export async function obtenerClientes() {
   /* const response = await fetch('http://localhost:3000/api/demo/cliente');
   let  data  = await response.json();
   return data; */
-  let res = await axios.get('http://localhost:3000/api/demo/cliente');
+  let res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/demo/cliente`);
 
   let data = res.data;
   return data;
@@ -19,7 +20,7 @@ export async function obtenerCliente(id) {
   /* const response = await fetch('http://localhost:3000/api/demo/cliente');
   let  data  = await response.json();
   return data; */
-  let res = await axios.get(`http://localhost:3000/api/demo/cliente/${id}`);
+  let res = await axios.get(`${URL}/api/demo/cliente/${id}`);
 
   let data = res.data;
   return data;
@@ -36,7 +37,7 @@ export async function exportar(datos) {
   console.log(datos)
 
   try {
-    let res = await axios.post('http://localhost:3000/api/demo/producto', datos,
+    let res = await axios.post(`${URL}/api/demo/producto`, datos,
 
       {
         headers: {
@@ -56,7 +57,7 @@ export async function exportar(datos) {
 
 export async function obtenerProductos() {
 
-  let res = await axios.get('http://localhost:3000/api/demo/producto');
+  let res = await axios.get(`${URL}/api/demo/producto`);
 
   let data = res.data;
   return data;
@@ -64,14 +65,14 @@ export async function obtenerProductos() {
 }
 
 export async function obtenerVentas(idCliente) {
-  let res = await axios.get(`http://localhost:3000/api/demo/ventas/${idCliente}`);
+  let res = await axios.get(`${URL}/api/demo/ventas/${idCliente}`);
 
   let data = res.data;
   return data;
 }
 
 export async function detalleFactura(idVenta) {
-  let res = await axios.get(`http://localhost:3000/api/demo/venta/${idVenta}`);
+  let res = await axios.get(`${URL}/api/demo/venta/${idVenta}`);
 
   let data = res.data;
   return data;
@@ -89,7 +90,7 @@ export async function guardarVenta(productos, cliente, total) {
 
   let id = 0;
 
-  let res = await axios.post('http://localhost:3000/api/demo/ventas', venta)
+  let res = await axios.post(`${URL}/api/demo/ventas`, venta)
     .then((response) => {
       id = response.data.data;
 
@@ -106,7 +107,7 @@ export async function guardarPago(ID, cancelada) {
     cancelada: cancelada
   }
 
-  let res = await axios.put('http://localhost:3000/api/demo/venta', pago)
+  let res = await axios.put(`${URL}/api/demo/venta`, pago)
     .then((response) => { console.log('Respuesta ' + response) })
     .catch((err) => { return err });
 }
@@ -117,7 +118,7 @@ export async function obtenerDeuda(id) {
 
 export async function ventasCliente(idCliente) {
 
-  let res = await axios.get(`http://localhost:3000/api/demo/ventas/${idCliente}`);
+  let res = await axios.get(`${URL}/api/demo/ventas/${idCliente}`);
 
   return res;
 }
@@ -128,16 +129,16 @@ export async function crearPdf(nombre, email, recibo, total, productos) {
   const mail = { email }
 
 
-  await axios.post('http://localhost:3000/api/demo/pdf', data)
+  await axios.post(`${URL}/api/demo/pdf`, data)
     .then((response) => {
-      axios.get('http://localhost:3000/api/demo/pdf', { responseType: 'blob' })
+      axios.get(`${URL}/api/demo/pdf`, { responseType: 'blob' })
         .then((res) => {
           const pdfBlob = new Blob([res.data], { type: 'application/pdf' })
           saveAs(pdfBlob, 'InvoiceDocument.pdf')  //to save we use file saver
 
         })
         .then(() => {
-          axios.post('http://localhost:3000/api/demo/enviarPdf', mail)
+          axios.post(`${URL}/api/demo/enviarPdf`, mail)
 
             .then((response) => {
               console.log(response);
@@ -158,9 +159,9 @@ export async function crearRecibo(recibo, entrega, cliente) {
   const mail = { email }
 
 
-   await axios.post('http://localhost:3000/api/demo/recibo', data)
+   await axios.post(`${URL}/api/demo/recibo`, data)
   .then((response) => {
-    axios.get('http://localhost:3000/api/demo/recibo', { responseType: 'blob' })
+    axios.get(`${URL}/api/demo/recibo`, { responseType: 'blob' })
       .then((res) => {
         const pdfBlob = new Blob([res.data], { type: 'application/pdf' })
         saveAs(pdfBlob, 'ReciboDocument.pdf')  //to save we use file saver
@@ -168,7 +169,7 @@ export async function crearRecibo(recibo, entrega, cliente) {
       })
       .then(() => {
         console.log(email)
-        axios.post('http://localhost:3000/api/demo/enviarRecibo', mail)
+        axios.post(`${URL}/api/demo/enviarRecibo`, mail)
 
           .then((response) => {
             console.log(response);
@@ -206,7 +207,7 @@ export async function guardarActualizacion(ids,  porcentaje) {
     
   })
 
-  let res = await axios.put('http://localhost:3000/api/demo/listaproductos', lista)
+  let res = await axios.put(`${URL}/api/demo/listaproductos`, lista)
     .then((response) => { console.log('Respuesta ' + response) })
     .catch((err) => { return err });
   

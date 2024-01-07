@@ -132,8 +132,8 @@ export default function ListarProductos() {
 
     })
     setRecord(array) */
+    setProducto([])
     setRecord([])
-    
   }
  
   return (
