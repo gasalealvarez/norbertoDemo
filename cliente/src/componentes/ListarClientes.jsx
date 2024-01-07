@@ -4,6 +4,7 @@ import '../estilos/ListarClientes.css';
 import { obtenerClientes } from '../Servicio/DatosServicio';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import CrearCliente from './CrearCliente';
 
 
 
@@ -29,6 +30,7 @@ export default function ListarClientes() {
 
   return (
     <div className='contenedor_tabla'>
+      <CrearCliente />
       <Table striped bordered hover variant="dark">
       <thead>
         <tr>

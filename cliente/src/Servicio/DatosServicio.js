@@ -3,6 +3,34 @@ import { saveAs } from 'file-saver'
 
 const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"
 
+
+export async function guardarCliente(nombre, direccion, telefono, localidad, email) {
+  try {
+    let cliente = {
+      nombre: nombre,
+      direccion: direccion,
+      telefono: telefono,
+      localidad: localidad,
+      email: email
+    }
+
+    console.log(cliente)
+     let res = await axios.post(`${URL}/api/demo/cliente`, cliente,
+
+      {
+        headers: {
+          // Overwrite Axios's automatically set Content-Type
+          'Content-Type': 'application/json'
+        }
+      })
+    let results = await res.json();
+    return results; 
+  } catch (err) {
+    // Handle Error Here
+    return err;
+  }
+}
+
 export async function obtenerClientes() {
   /* const response = await fetch('http://localhost:3000/api/demo/cliente');
   let  data  = await response.json();
