@@ -14,6 +14,10 @@ env.config();
 
 app.use('/api/demo', require('./rutas/rutas'));
 
+app.use(cors({
+    origin: process.env.FRONTEND_URL
+}));
+
 
 app.listen(3000, function(){
     console.log('Servidor corriendo en puerto 3000');

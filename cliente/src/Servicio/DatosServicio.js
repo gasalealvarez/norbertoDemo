@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { saveAs } from 'file-saver'
 
-const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000"
+const URL = import.meta.env.VITE_BACKEND_URL 
 
 
 export async function guardarCliente(nombre, direccion, telefono, localidad, email) {
