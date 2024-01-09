@@ -5,18 +5,20 @@ const cors = require('cors')
 
 const app = express();
 
-app.use(cors());
+//app.use(cors());
 //app.use(express.json());
 app.use(express.json({ limit: '2000kb' }));
 app.use(bodyParser.json());
 
 env.config();
+console.log("* " + process.env.FRONTEND_URL);
+app.use(cors({  
+    origin: process.env.FRONTEND_URL
+}));
 
 app.use('/api/demo', require('./rutas/rutas'));
 
-app.use(cors({
-    origin: process.env.FRONTEND_URL
-}));
+
 
 
 app.listen(3000, function(){
