@@ -1,4 +1,4 @@
-module.exports =({nombre, email, recibo,  total, productos, image})=> {
+module.exports =({nombre, email, recibo,  total, productos})=> {
 
     const today = new Date();
     
@@ -91,9 +91,7 @@ module.exports =({nombre, email, recibo,  total, productos, image})=> {
                  <td colspan="4">
                     <table>
                        <tr>
-                          <td class="title"><img src= ${image}
-                             style="width:100%; max-width:156px;"></td>
-                          <td>
+                          
                           Fecha: ${`${today.getDate()}. ${today.getMonth() + 1}. ${today.getFullYear()}.`}
                           <br/>
                           Email: ${`${email}`}

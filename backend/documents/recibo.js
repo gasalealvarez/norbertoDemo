@@ -296,7 +296,7 @@ module.exports =({ recibo,  entrega, nombre})=> {
                                             <td class="content-block">
                                                 <table class="invoice">
                                                     <tbody><tr>
-                                                        <td>${nombre}<br>Recibo #${recibo}<br>${`${today.getDate()}. ${today.getMonth() + 1}. ${today.getFullYear()}.`}</td>
+                                                        <td>${nombre}<br>Recibo #${recibo}<br>Fecha:..${`${today.getDate()}. ${today.getMonth() + 1}. ${today.getFullYear()}.`}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>
