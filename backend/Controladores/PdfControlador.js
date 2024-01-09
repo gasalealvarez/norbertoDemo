@@ -57,16 +57,7 @@ exports.sendPdf = (req,res)=>{
         from:process.env.EMAIL,
         to: req.body.email,
         subject:'Factura de compra',
-        html:`
-        Factura de compra adjuntada. Gracias`,
-        attachments:[
-            {
-                content:attachment,
-                filename:'invoice.pdf',
-                contentType: 'application/pdf',
-                path:pathToAttachment
-            }
-        ]
+        html: pdfTemplate(req.body)
     },function(error,info){
         if(error){
             console.log(error);

@@ -31,8 +31,8 @@ export default function CrearCliente() {
     } 
 
     return (
-        <div className='crearProducto text-center'>
-            <Button className="botonAgregar" variant="danger"  onClick={handleShow} >
+        <div className='crearCliente text-center '>
+            <Button  className="botonCliente mb-5" variant="danger"  onClick={handleShow} >
                 Agregar Cliente
             </Button>
 

@@ -154,10 +154,14 @@ export async function ventasCliente(idCliente) {
 
 export async function crearPdf(nombre, email, recibo, total, productos) {
   const data = { nombre, email, recibo, total, productos }
-  const mail = { email }
+ // const mail = { email }
 
+  axios.post(`${URL}/api/demo/enviarPdf`, data).then((response) => {
+    console.log(response);
+    alert(response.data)
+  })
 
-  await axios.post(`${URL}/api/demo/pdf`, data)
+  /* await axios.post(`${URL}/api/demo/pdf`, data)
     .then((response) => {
       axios.get(`${URL}/api/demo/pdf`, { responseType: 'blob' })
         .then((res) => {
@@ -174,7 +178,7 @@ export async function crearPdf(nombre, email, recibo, total, productos) {
             })
 
         })
-    })
+    }) */
 
 }
 
@@ -182,12 +186,19 @@ export async function crearPdf(nombre, email, recibo, total, productos) {
 export async function crearRecibo(recibo, entrega, cliente) {
 
   const {nombre, email} = cliente;
-  const data = { recibo, entrega, nombre }
+  const data = { recibo, entrega, nombre, email }
 
   const mail = { email }
 
+  axios.post(`${URL}/api/demo/enviarRecibo`, data)
 
-   await axios.post(`${URL}/api/demo/recibo`, data)
+  .then((response) => {
+    console.log(response);
+    alert(response.data)
+  })
+
+
+   /* await axios.post(`${URL}/api/demo/recibo`, data)
   .then((response) => {
     axios.get(`${URL}/api/demo/recibo`, { responseType: 'blob' })
       .then((res) => {
@@ -205,7 +216,7 @@ export async function crearRecibo(recibo, entrega, cliente) {
           })
 
       })
-  }) 
+  })  */
 }
 
 export async function guardarActualizacion(ids,  porcentaje) {

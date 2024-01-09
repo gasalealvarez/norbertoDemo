@@ -303,8 +303,8 @@ module.exports =({ recibo,  entrega, nombre})=> {
                                                             <table class="invoice-items" cellpadding="0" cellspacing="0">
                                                                 <tbody>
                                                                 <tr>
-                                                                    <td>${recibo}</td>
-                                                                    <td class="alignright">$ ${entrega}</td>
+                                                                    <td>Factura N:... ${recibo}</td>
+                                                                    <td class="alignright">Entrega:...$ ${entrega}</td>
                                                                 </tr>
                                                                 
                                                             </tbody></table>

@@ -58,7 +58,8 @@ exports.sendPdf = (req,res)=>{
         from:process.env.EMAIL,
         to: req.body.email,
         subject:'Recibo',
-        html:`
+        html: pdfTemplate(req.body)
+       /*  html:`
         Recibo de pago adjuntado. Gracias`,
         attachments:[
             {
@@ -67,7 +68,7 @@ exports.sendPdf = (req,res)=>{
                 contentType: 'application/pdf',
                 path:pathToAttachment
             }
-        ]
+        ] */
     },function(error,info){
         if(error){
             console.log(error);

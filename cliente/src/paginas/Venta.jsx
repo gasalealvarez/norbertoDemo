@@ -137,7 +137,7 @@ export default function Venta() {
                     onChange={handleSubtotal}
                   />
                 </InputGroup>
-                <Button className='botonTerminar' variant="secondary" onClick={handleTerminar}>Terminar</Button>
+                <Button className='botonTerminar' variant="danger" onClick={handleTerminar}>Terminar</Button>
               </Card.Body>
             </Card>
           </Col>

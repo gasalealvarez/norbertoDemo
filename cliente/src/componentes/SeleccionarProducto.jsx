@@ -110,7 +110,7 @@ export default function ModalProducto({productoElegido}) {
      
     return (
         <div className='listarProducto'>
-            <Button  className="botonAgregar" variant="danger" onClick={handleShow}>
+            <Button  className="botonAgregar" variant="success" onClick={handleShow}>
                 Agregar Producto
             </Button>
 
