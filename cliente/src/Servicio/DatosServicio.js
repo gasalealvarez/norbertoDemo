@@ -153,13 +153,19 @@ export async function ventasCliente(idCliente) {
 
 
 export async function crearPdf(nombre, email, recibo, total, productos) {
-  const data = { nombre, email, recibo, total, productos }
+  //const data = { nombre, email, recibo, total, productos }
 
 
   // const mail = { email }
-  // axios.post(`${URL}/api/demo/enviarPdf`
+  
+  const data = {
+    nombre: nombre,
+    email: email,
+    recibo: recibo,
+    total: total,
+    productos: productos,
+  }
 
-  console.log("data " + data);
 
   axios.post(`${URL}/api/demo/enviarPdf`, data)
 
