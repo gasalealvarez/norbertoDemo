@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { saveAs } from 'file-saver'
 
-const URL = import.meta.env.VITE_BACKEND_URL 
+const URL = import.meta.env.VITE_BACKEND_URL
 
 
 export async function guardarCliente(nombre, direccion, telefono, localidad, email) {
@@ -15,7 +15,7 @@ export async function guardarCliente(nombre, direccion, telefono, localidad, ema
     }
 
     console.log(cliente)
-     let res = await axios.post(`${URL}/api/demo/cliente`, cliente,
+    let res = await axios.post(`${URL}/api/demo/cliente`, cliente,
 
       {
         headers: {
@@ -24,7 +24,7 @@ export async function guardarCliente(nombre, direccion, telefono, localidad, ema
         }
       })
     let results = await res.json();
-    return results; 
+    return results;
   } catch (err) {
     // Handle Error Here
     return err;
@@ -44,7 +44,7 @@ export async function obtenerClientes() {
 
 export async function obtenerCliente(id) {
 
-  
+
   /* const response = await fetch('http://localhost:3000/api/demo/cliente');
   let  data  = await response.json();
   return data; */
@@ -141,7 +141,7 @@ export async function guardarPago(ID, cancelada) {
 }
 
 export async function obtenerDeuda(id) {
- 
+
 }
 
 export async function ventasCliente(idCliente) {
@@ -154,18 +154,25 @@ export async function ventasCliente(idCliente) {
 
 export async function crearPdf(nombre, email, recibo, total, productos) {
   const data = { nombre, email, recibo, total, productos }
- // const mail = { email }
 
-  axios.post(`${URL}/api/demo/enviarPdf`, data, 
-    {
-    headers: {
-      // Overwrite Axios's automatically set Content-Type
-      'Content-Type': 'application/json'
-    }
-    }).then((response) => {
-    console.log(response);
-    alert(response.data)
-  })
+
+  // const mail = { email }
+
+  try {
+    let res = axios.post(`${URL}/api/demo/enviarPdf`, data,
+      {
+        headers: {
+          // Overwrite Axios's automatically set Content-Type
+          'Content-Type': 'application/json'
+        }
+      })
+    let results = await res.json();
+    //alert(results)
+    return results;
+  } catch (err) {
+    return err;
+
+  }
 
   /* await axios.post(`${URL}/api/demo/pdf`, data)
     .then((response) => {
@@ -191,72 +198,72 @@ export async function crearPdf(nombre, email, recibo, total, productos) {
 
 export async function crearRecibo(recibo, entrega, cliente) {
 
-  const {nombre, email} = cliente;
+  const { nombre, email } = cliente;
   const data = { recibo, entrega, nombre, email }
 
   const mail = { email }
 
   axios.post(`${URL}/api/demo/enviarRecibo`, data)
 
-  .then((response) => {
-    console.log(response);
-    alert(response.data)
-  })
+    .then((response) => {
+      console.log(response);
+      alert(response.data)
+    })
 
 
-   /* await axios.post(`${URL}/api/demo/recibo`, data)
-  .then((response) => {
-    axios.get(`${URL}/api/demo/recibo`, { responseType: 'blob' })
-      .then((res) => {
-        const pdfBlob = new Blob([res.data], { type: 'application/pdf' })
-        saveAs(pdfBlob, 'ReciboDocument.pdf')  //to save we use file saver
+  /* await axios.post(`${URL}/api/demo/recibo`, data)
+ .then((response) => {
+   axios.get(`${URL}/api/demo/recibo`, { responseType: 'blob' })
+     .then((res) => {
+       const pdfBlob = new Blob([res.data], { type: 'application/pdf' })
+       saveAs(pdfBlob, 'ReciboDocument.pdf')  //to save we use file saver
 
-      })
-      .then(() => {
-        console.log(email)
-        axios.post(`${URL}/api/demo/enviarRecibo`, mail)
+     })
+     .then(() => {
+       console.log(email)
+       axios.post(`${URL}/api/demo/enviarRecibo`, mail)
 
-          .then((response) => {
-            console.log(response);
-            alert(response.data)
-          })
+         .then((response) => {
+           console.log(response);
+           alert(response.data)
+         })
 
-      })
-  })  */
+     })
+ })  */
 }
 
-export async function guardarActualizacion(ids,  porcentaje) {
-  
+export async function guardarActualizacion(ids, porcentaje) {
+
   //const mail = { email }
   let porcentajefinal;
-  
+
   if (porcentaje.length == 1) {
     porcentajefinal = "0" + porcentaje;
   } else {
     porcentajefinal = porcentaje
   }
-  let addPorcentaje ="1." + porcentajefinal;
-  let lista=[];
-  
- 
+  let addPorcentaje = "1." + porcentajefinal;
+  let lista = [];
 
-   ids.map(id => {
+
+
+  ids.map(id => {
     const productoEditar = {
       id: id.ID,
       precioAnterior: id.precio,
-      precio: (parseFloat(id.precio) * parseFloat(addPorcentaje)).toFixed(2) 
+      precio: (parseFloat(id.precio) * parseFloat(addPorcentaje)).toFixed(2)
     }
-  
-  
-      lista.push(productoEditar);
-    
+
+
+    lista.push(productoEditar);
+
   })
 
   let res = await axios.put(`${URL}/api/demo/listaproductos`, lista)
     .then((response) => { console.log('Respuesta ' + response) })
     .catch((err) => { return err });
-  
-} 
+
+}
 
 
 
