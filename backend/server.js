@@ -13,7 +13,9 @@ app.use(bodyParser.json());
 env.config();
 console.log("* " + process.env.FRONTEND_URL);
 app.use(cors({  
-    origin: process.env.FRONTEND_URL
+    origin: process.env.FRONTEND_URL,
+    credentials:true,
+    optionSuccessStatus:200
 }));
 
 app.use('/api/demo', require('./rutas/rutas'));
