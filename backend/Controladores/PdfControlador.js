@@ -37,6 +37,8 @@ exports.sendPdf = (req,res)=>{
 
     const { email } = req.body;
     
+    console.log("req body " + req.body)
+
     const accessToken = oauth2Client.getAccessToken();
     //pathToAttachment = path.join(__dirname , 'invoice.pdf')
     //attachment = fs.readFileSync(pathToAttachment).toString("base64")

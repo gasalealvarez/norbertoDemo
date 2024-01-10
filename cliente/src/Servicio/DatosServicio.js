@@ -157,22 +157,16 @@ export async function crearPdf(nombre, email, recibo, total, productos) {
 
 
   // const mail = { email }
+  // axios.post(`${URL}/api/demo/enviarPdf`
 
-  try {
-    let res = axios.post(`${URL}/api/demo/enviarPdf`, data,
-      {
-        headers: {
-          // Overwrite Axios's automatically set Content-Type
-          'Content-Type': 'application/json'
-        }
-      })
-    let results = await res.json();
-    //alert(results)
-    return results;
-  } catch (err) {
-    return err;
+  console.log("data " + data);
 
-  }
+  axios.post(`${URL}/api/demo/enviarPdf`, data)
+
+  .then((response) => {
+    console.log(response);
+    alert(response.data)
+  })
 
   /* await axios.post(`${URL}/api/demo/pdf`, data)
     .then((response) => {
@@ -203,6 +197,7 @@ export async function crearRecibo(recibo, entrega, cliente) {
 
   const mail = { email }
 
+  
   axios.post(`${URL}/api/demo/enviarRecibo`, data)
 
     .then((response) => {
