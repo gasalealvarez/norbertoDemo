@@ -157,6 +157,7 @@ export async function crearPdf(nombre, email, recibo, total, productos) {
 
 
   // const mail = { email }
+
   
   const data = {
     nombre: nombre,
@@ -168,7 +169,6 @@ export async function crearPdf(nombre, email, recibo, total, productos) {
 
 
   axios.post(`${URL}/api/demo/enviarPdf`, data)
-
   .then((response) => {
     console.log(response);
     alert(response.data)

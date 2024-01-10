@@ -1,5 +1,6 @@
-module.exports =({nombre, email, recibo,  total, productos})=> {
+module.exports =(nombre, email, recibo,  total, productos)=> {
 
+   
     const today = new Date();
     
     return `

@@ -35,9 +35,14 @@ const oauth2Client = new OAuth2(
 
 exports.sendPdf = (req,res)=>{
 
-    const { email } = req.body;
+    const datos = req.body;
+
     
-    console.log("req body " + req.body)
+    const  {nombre,  email, recibo , total, productos} = datos;
+
+   
+    console.log("datos " + datos)   
+    console.log(nombre,  email, recibo , total, productos)
 
     const accessToken = oauth2Client.getAccessToken();
     //pathToAttachment = path.join(__dirname , 'invoice.pdf')
@@ -57,9 +62,9 @@ exports.sendPdf = (req,res)=>{
 
     smtpTransport.sendMail({
         from:process.env.EMAIL,
-        to: req.body.email,
+        to: email,
         subject:'Factura de compra',
-        html: pdfTemplate(req.body)
+        html: pdfTemplate(nombre,  email, recibo , total, productos)
     },function(error,info){
         if(error){
             console.log(error);
